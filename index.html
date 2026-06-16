@@ -130,9 +130,9 @@
     flex-shrink: 0;
   }
   .icon-area-inner img {
-    width: 90px; height: 90px;
+    width: 110px; height: 110px;
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 24px;
     border: 3px solid rgba(0,0,0,0.10);
     background: #f5f5f5;
     padding: 5px;
@@ -161,7 +161,7 @@
   .btn-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
     width: 100%;
     flex: 1;
@@ -170,11 +170,11 @@
 
   /* ── CHOICE BUTTONS – large, iPad-filling ── */
   .choice-btn {
-    min-width: 130px;
-    min-height: 100px;
+    min-width: 155px;
+    min-height: 130px;
     border: 4px solid rgba(0,0,0,0.10);
     border-radius: var(--radius-btn);
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -194,9 +194,9 @@
   .choice-btn:active { transform: scale(0.93); box-shadow: 0 1px 4px rgba(0,0,0,0.10); }
   .choice-btn:disabled { opacity: 0.42; cursor: not-allowed; pointer-events: none; }
   .choice-btn img {
-    width: 60px; height: 60px;
+    width: 76px; height: 76px;
     object-fit: contain;
-    border-radius: 13px;
+    border-radius: 16px;
     border: 2px solid rgba(0,0,0,0.10);
     background: rgba(255,255,255,0.55);
     padding: 3px;
@@ -225,8 +225,8 @@
 
   /* ── DATE BUTTONS – uniform green ── */
   .date-btn {
-    width: 80px;
-    height: 80px;
+    width: 96px;
+    height: 96px;
     border: 4px solid var(--date-green-border);
     border-radius: var(--radius-btn);
     background: var(--date-green-bg);
@@ -259,10 +259,10 @@
     flex-shrink: 0;
   }
   .year-slot {
-    width: 68px; height: 84px;
+    width: 82px; height: 100px;
     border: 4px solid #ce93d8;
-    border-radius: 14px;
-    font-size: 2.2rem;
+    border-radius: 16px;
+    font-size: 2.6rem;
     font-weight: 700;
     color: #4a148c;
     display: flex;
@@ -276,9 +276,9 @@
   .digit-year {
     background: #f3e5f5;
     color: #4a148c;
-    min-width: 80px;
-    min-height: 80px;
-    font-size: 1.8rem;
+    min-width: 98px;
+    min-height: 98px;
+    font-size: 2.1rem;
   }
 
   /* ── BOTTOM ROW ── */
@@ -429,27 +429,27 @@
   /* ── iPad / larger screens ── */
   @media (min-width: 600px) {
     .q { font-size: 2.2rem; }
-    .choice-btn { min-width: 150px; min-height: 118px; font-size: 1.35rem; }
-    .choice-btn img { width: 70px; height: 70px; }
-    .date-btn { width: 88px; height: 88px; font-size: 1.4rem; }
-    .digit-year { min-width: 90px; min-height: 90px; font-size: 2rem; }
-    .year-slot { width: 76px; height: 92px; font-size: 2.5rem; }
-    .action-btn { font-size: 1.55rem; padding: 18px 52px; }
-    .icon-area-inner img { width: 100px; height: 100px; }
+    .choice-btn { min-width: 175px; min-height: 148px; font-size: 1.5rem; }
+    .choice-btn img { width: 88px; height: 88px; }
+    .date-btn { width: 102px; height: 102px; font-size: 1.55rem; }
+    .digit-year { min-width: 108px; min-height: 108px; font-size: 2.2rem; }
+    .year-slot { width: 90px; height: 108px; font-size: 2.8rem; }
+    .action-btn { font-size: 1.6rem; padding: 20px 56px; }
+    .icon-area-inner img { width: 120px; height: 120px; }
   }
   @media (min-width: 768px) {
-    .choice-btn { min-width: 160px; min-height: 130px; font-size: 1.4rem; }
-    .choice-btn img { width: 76px; height: 76px; }
-    .date-btn { width: 94px; height: 94px; font-size: 1.5rem; }
-    .btn-grid { gap: 12px; }
+    .choice-btn { min-width: 190px; min-height: 164px; font-size: 1.6rem; }
+    .choice-btn img { width: 96px; height: 96px; }
+    .date-btn { width: 108px; height: 108px; font-size: 1.65rem; }
+    .btn-grid { gap: 14px; }
   }
   @media (max-width: 420px) {
     .q { font-size: 1.5rem; }
-    .choice-btn { min-width: 100px; min-height: 86px; font-size: 1.05rem; }
-    .choice-btn img { width: 48px; height: 48px; }
-    .date-btn { width: 64px; height: 64px; font-size: 1.1rem; }
-    .digit-year { min-width: 66px; min-height: 66px; font-size: 1.5rem; }
-    .year-slot { width: 52px; height: 68px; font-size: 1.9rem; }
+    .choice-btn { min-width: 120px; min-height: 104px; font-size: 1.15rem; }
+    .choice-btn img { width: 58px; height: 58px; }
+    .date-btn { width: 76px; height: 76px; font-size: 1.25rem; }
+    .digit-year { min-width: 80px; min-height: 80px; font-size: 1.7rem; }
+    .year-slot { width: 62px; height: 78px; font-size: 2.1rem; }
     .result-badge { font-size: 0.88rem; padding: 4px 9px; }
     .action-btn { font-size: 1.2rem; padding: 14px 32px; }
   }
@@ -709,7 +709,7 @@ function setStepIcon(divId, iconFile, emoji) {
   const div=document.getElementById(divId);
   if (!div) return;
   div.innerHTML='';
-  div.appendChild(makeImg(iconFile, emoji, 90));
+  div.appendChild(makeImg(iconFile, emoji, 110));
 }
 function makeBadge(text, bgCls, iconFile, emoji) {
   const badge=document.createElement('span');
@@ -805,7 +805,7 @@ function buildGrids() {
   SEASONS.forEach((s,i)=>{
     const btn=document.createElement('button');
     btn.className='choice-btn '+s.cls;
-    btn.appendChild(makeImg(s.icon,s.emoji,70));
+    btn.appendChild(makeImg(s.icon,s.emoji,88));
     const sp=document.createElement('span'); sp.textContent=s.label;
     btn.appendChild(sp); btn.onclick=()=>checkSeason(i);
     gs.appendChild(btn);
@@ -858,6 +858,20 @@ function checkWeekday(index) {
   showFeedback('weekday',correct,msg);
 }
 
+function ordinalDE(n) {
+  const map = {
+     1:'erste',   2:'zweite',  3:'dritte',   4:'vierte',   5:'fünfte',
+     6:'sechste', 7:'siebte',  8:'achte',    9:'neunte',   10:'zehnte',
+    11:'elfte',  12:'zwölfte', 13:'dreizehnte', 14:'vierzehnte', 15:'fünfzehnte',
+    16:'sechzehnte', 17:'siebzehnte', 18:'achtzehnte', 19:'neunzehnte',
+    20:'zwanzigste', 21:'einundzwanzigste', 22:'zweiundzwanzigste',
+    23:'dreiundzwanzigste', 24:'vierundzwanzigste', 25:'fünfundzwanzigste',
+    26:'sechsundzwanzigste', 27:'siebenundzwanzigste', 28:'achtundzwanzigste',
+    29:'neunundzwanzigste', 30:'dreißigste', 31:'einunddreißigste'
+  };
+  return map[n] || n+'.';
+}
+
 function checkDate(num) {
   document.querySelectorAll('#grid-date .date-btn').forEach(b=>{
     b.style.opacity='0.42'; b.style.pointerEvents='none';
@@ -871,8 +885,8 @@ function checkDate(num) {
   }
   const correct=num===correctDate;
   const msg=correct
-    ?'Richtig! Heute ist der '+correctDate+'.'
-    :'Heute ist nicht der '+num+'. Heute ist der '+correctDate+'.';
+    ?'Richtig! Heute ist der '+ordinalDE(correctDate)+'!'
+    :'Heute ist nicht der '+ordinalDE(num)+'. Heute ist der '+ordinalDE(correctDate)+'.';
   showFeedback('date',correct,msg);
 }
 
@@ -970,7 +984,7 @@ function buildHeaderResult(wd,mon,ssn) {
 }
 
 function speakSummary() {
-  speak(`Heute ist ${WEEKDAYS[weekdayIndex].label}, der ${correctDate}. ${MONTHS[correctMonth].label} ${correctYear}. Wir haben ${SEASONS[correctSeason].label}.`);
+  speak(`Heute ist ${WEEKDAYS[weekdayIndex].label}, der ${ordinalDE(correctDate)} ${MONTHS[correctMonth].label} ${correctYear}. Wir haben ${SEASONS[correctSeason].label}.`);
 }
 
 // ═══════════════════════════════════════════════
