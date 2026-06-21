@@ -312,6 +312,8 @@
   .btn-start { background: #1a7aff; color: #fff; }
   .btn-speak { background: #ecf0f1; color: #2c3e50; border: 2px solid #bdc3c7;
                font-size: 1.15rem; padding: 11px 24px; box-shadow: none; }
+  .btn-next { background: #2ecc71; color: #fff; font-size: 1.15rem; padding: 11px 28px; }
+  .btn-next:disabled { background: #b9e3c6; color: #fff; opacity: 0.7; cursor: not-allowed; box-shadow: none; }
   .btn-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
   /* ── START SCREEN ── */
@@ -538,6 +540,7 @@
       <div class="btn-grid" id="grid-weekday"></div>
       <div class="btn-row">
         <button class="action-btn btn-speak" onclick="speakQuestion('weekday')">🔊 Nochmal hören</button>
+        <button class="action-btn btn-next" id="next-weekday" onclick="nextStep()" disabled>Weiter ➜</button>
       </div>
     </div>
 
@@ -549,6 +552,7 @@
       <div class="btn-grid" id="grid-date"></div>
       <div class="btn-row">
         <button class="action-btn btn-speak" onclick="speakQuestion('date')">🔊 Nochmal hören</button>
+        <button class="action-btn btn-next" id="next-date" onclick="nextStep()" disabled>Weiter ➜</button>
       </div>
     </div>
 
@@ -560,6 +564,7 @@
       <div class="btn-grid" id="grid-month"></div>
       <div class="btn-row">
         <button class="action-btn btn-speak" onclick="speakQuestion('month')">🔊 Nochmal hören</button>
+        <button class="action-btn btn-next" id="next-month" onclick="nextStep()" disabled>Weiter ➜</button>
       </div>
     </div>
 
@@ -578,6 +583,7 @@
       <div class="btn-row">
         <button class="action-btn btn-speak" onclick="speakQuestion('year')">🔊 Nochmal hören</button>
         <button class="action-btn" style="background:#e74c3c;color:#fff;font-size:1.1rem;padding:11px 22px;border:none;border-radius:999px;cursor:pointer;font-family:var(--font);box-shadow:0 4px 14px rgba(0,0,0,0.16);" onclick="clearYear()">⌫ Löschen</button>
+        <button class="action-btn btn-next" id="next-year" onclick="nextStep()" disabled>Weiter ➜</button>
       </div>
     </div>
 
@@ -589,6 +595,7 @@
       <div class="btn-grid" id="grid-season"></div>
       <div class="btn-row">
         <button class="action-btn btn-speak" onclick="speakQuestion('season')">🔊 Nochmal hören</button>
+        <button class="action-btn btn-next" id="next-season" onclick="nextStep()" disabled>Weiter ➜</button>
       </div>
     </div>
 
@@ -915,6 +922,8 @@ function showStep(index) {
     const dot = document.getElementById('dot'+i);
     if (dot) dot.className = 'dot'+(i<index?' done':i===index?' active':'');
   }
+  const nextBtn = document.getElementById('next-' + steps[index]);
+  if (nextBtn) nextBtn.disabled = true;
   if (index===0) setStepIcon('icon-weekday', 'tag.png', '🗓️');
   if (index===2) setStepIcon('icon-month',   'monat.png',  '📆');
   if (index===4) setStepIcon('icon-season',  'jahreszeit.png', '🌿');
@@ -931,7 +940,8 @@ function nextStep() {
 // ═══════════════════════════════════════════════
 
 function afterAnswer() {
-  setTimeout(() => nextStep(), AUTO_ADVANCE_DELAY);
+  const nextBtn = document.getElementById('next-' + steps[currentStep]);
+  if (nextBtn) nextBtn.disabled = false;
 }
 
 function checkWeekday(index) {
