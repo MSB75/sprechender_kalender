@@ -744,6 +744,20 @@ function speak(text, delay=0) {
   else speechSynthesis.speak(u);
 }
 
+// Schreibt eine Zahl (1-31) als deutsches Ordnungszahlwort aus, z.B. 23 -> "dreiundzwanzigste".
+// Wird für die Sprachausgabe benötigt, da Safari/iOS "23." nicht zuverlässig als
+// Ordinalzahl erkennt und stattdessen "dreiundzwanzig" statt "dreiundzwanzigste" vorliest.
+const ORDINAL_WORDS_DE = [
+  '', 'erste', 'zweite', 'dritte', 'vierte', 'fünfte', 'sechste', 'siebte', 'achte', 'neunte',
+  'zehnte', 'elfte', 'zwölfte', 'dreizehnte', 'vierzehnte', 'fünfzehnte', 'sechzehnte',
+  'siebzehnte', 'achtzehnte', 'neunzehnte', 'zwanzigste', 'einundzwanzigste', 'zweiundzwanzigste',
+  'dreiundzwanzigste', 'vierundzwanzigste', 'fünfundzwanzigste', 'sechsundzwanzigste',
+  'siebenundzwanzigste', 'achtundzwanzigste', 'neunundzwanzigste', 'dreißigste', 'einunddreißigste'
+];
+function ordinalWordDE(n) {
+  return ORDINAL_WORDS_DE[n] || (n + '.');
+}
+
 const QUESTIONS = {
   weekday: 'Welchen Tag haben wir heute?',
   date:    'Welches Datum haben wir heute?',
@@ -808,12 +822,12 @@ function highlightCorrectInGrid(gridId, idx) {
   }
 }
 
-function showFeedback(stepName, isCorrect, text) {
+function showFeedback(stepName, isCorrect, text, speechText) {
   const fb = document.getElementById('feedback-'+stepName);
   fb.classList.remove('hidden');
   fb.className = 'feedback ' + (isCorrect ? 'correct' : 'wrong');
   fb.textContent = (isCorrect ? '✅ ' : '❌ ') + text;
-  speak(text, 300);
+  speak(speechText || text, 300);
 }
 
 // ═══════════════════════════════════════════════
@@ -971,7 +985,10 @@ function checkDate(num) {
   const msg = correct
     ? 'Richtig! Heute ist der ' + correctDate + '.'
     : 'Heute ist nicht der ' + num + '. Heute ist der ' + correctDate + '.';
-  showFeedback('date', correct, msg);
+  const speechMsg = correct
+    ? 'Richtig! Heute ist der ' + ordinalWordDE(correctDate) + '.'
+    : 'Heute ist nicht der ' + ordinalWordDE(num) + '. Heute ist der ' + ordinalWordDE(correctDate) + '.';
+  showFeedback('date', correct, msg, speechMsg);
   afterAnswer();
 }
 
@@ -1083,7 +1100,7 @@ function buildHeaderResult(wd, mon, ssn) {
 }
 
 function speakSummary() {
-  speak(`Heute ist ${WEEKDAYS[weekdayIndex].label}, der ${correctDate}. ${MONTHS[correctMonth].label} ${correctYear}. Wir haben ${SEASONS[correctSeason].label}.`);
+  speak(`Heute ist ${WEEKDAYS[weekdayIndex].label}, der ${ordinalWordDE(correctDate)}. ${MONTHS[correctMonth].label} ${correctYear}. Wir haben ${SEASONS[correctSeason].label}.`);
 }
 
 // ═══════════════════════════════════════════════
